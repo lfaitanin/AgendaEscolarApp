@@ -1,9 +1,10 @@
-﻿using MediatR;
+﻿using AgendaEscolarApp.Domain.Entities.Enum;
+using MediatR;
 
 
 namespace AgendaEscolarApp.Application.Users.Commands
 {
-    public class CriarUsuarioCommand : IRequest<Guid>
+    public class CreateUsersCommand : IRequest<Guid>
     {
         public string Nome { get; set; }
         public string Email { get; set; }

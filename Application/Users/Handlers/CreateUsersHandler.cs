@@ -1,18 +1,19 @@
 ﻿using AgendaEscolarApp.Application.Users.Commands;
 using MediatR;
+using AgendaEscolarApp.Domain.Entities;
 
 namespace AgendaEscolarApp.Application.Users.Handlers
 {
-    public class CriarUsuarioHandler : IRequestHandler<CriarUsuarioCommand, Guid>
+    public class CreateUsersHandler : IRequestHandler<CreateUsersCommand, Guid>
     {
         private readonly ApplicationDbContext _context;
 
-        public CriarUsuarioHandler(ApplicationDbContext context)
+        public CreateUsersHandler(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<Guid> Handle(CriarUsuarioCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateUsersCommand request, CancellationToken cancellationToken)
         {
             var usuario = new Usuario
             {

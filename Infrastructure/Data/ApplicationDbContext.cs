@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AgendaEscolarApp.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 public class ApplicationDbContext : DbContext
 {
@@ -11,17 +12,3 @@ public class ApplicationDbContext : DbContext
     //// Outras tabelas...
 }
 
-public class Usuario
-{
-    public Guid Id { get; set; }
-    public string Nome { get; set; }
-    public string Email { get; set; }
-    public string Senha { get; set; }
-    public TipoUsuario TipoUsuario { get; set; }
-}
-public enum TipoUsuario
-{
-    Gestor,
-    Professor,
-    Responsavel
-}

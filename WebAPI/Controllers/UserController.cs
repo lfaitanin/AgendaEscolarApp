@@ -2,22 +2,23 @@
 using AgendaEscolarApp.Application.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using AgendaEscolarApp.Domain.Entities;
 
 namespace AgendaEscolarApp.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuariosController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public UsuariosController(IMediator mediator)
+        public UserController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> CriarUsuario(CriarUsuarioCommand command)
+        public async Task<ActionResult<int>> CriarUsuario(CreateUsersCommand command)
         {
             var id = await _mediator.Send(command);
             return Ok(id);
@@ -26,7 +27,7 @@ namespace AgendaEscolarApp.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> GetUsuarios()
         {
-            var usuarios = await _mediator.Send(new GetUsuariosQuery());
+            var usuarios = await _mediator.Send(new GetUsersQuery());
             return Ok(usuarios);
         }
     }
